@@ -4,8 +4,8 @@ Every directory of this repo consists of a sepparate training.
 
 ## ToC
 
-- [Inheritance](inheritance/README.md)
-- [Generators](generators/README.md)
+- [Inheritance](inheritance/)
+- [Generators](generators/)
 
 ### Setup
 
