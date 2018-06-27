@@ -6,6 +6,14 @@ This example demonstrates that a `Car` instance can be injected any dependency t
 
 # Magic Methods
 
+Python offers lots of magic methods, this example demonstrates the use of:
+
+- `__name__`: To get the name of the current class, function, module, descriptor or generator.
+- `__class__`: To get the class of an instance
+- `__repr__`: To get the official string representation of an object, useful for development. Called by the `repr()` method.
+- `__str__`: To get the printable string representation of an object. Called by the `str()` method.
+
+
 Blah
 
 ## Run the exercise

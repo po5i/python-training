@@ -14,6 +14,14 @@ class InheritanceTest(unittest.TestCase):
         car.turn_on()
         self.assertEqual(car._engine.active_pistons, 8)
 
+    def test_magic_methods(self):
+        car = Car(V8Engine())
+
+        self.assertEqual(Car.__name__, 'Car')
+        self.assertTrue(car.__class__, Car)
+        self.assertEqual(repr(car), '<Car with V8 Engine>')
+        self.assertEqual(str(car), 'V8 Car')
+
 
 if __name__ == '__main__':
     unittest.main()
