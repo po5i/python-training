@@ -14,8 +14,6 @@ Python offers lots of magic methods, this example demonstrates the use of:
 - `__str__`: To get the printable string representation of an object. Called by the `str()` method.
 
 
-Blah
-
 ## Run the exercise
 
 ```bash
