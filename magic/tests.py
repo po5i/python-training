@@ -22,6 +22,14 @@ class InheritanceTest(unittest.TestCase):
         self.assertEqual(repr(car), '<Car with V8 Engine>')
         self.assertEqual(str(car), 'V8 Car')
 
+        car.transmission = 'manual'
+        self.assertEqual(car.transmission, 'manual')
+
+        with self.assertRaises(AttributeError) as context:
+            car.transmission = 'anything'
+        self.assertEqual(context.exception.__class__, AttributeError)
+        self.assertTrue('Valid values are' in str(context.exception))
+
 
 if __name__ == '__main__':
     unittest.main()

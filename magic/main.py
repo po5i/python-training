@@ -1,3 +1,17 @@
+class Transmission(str):
+    def __init__(self):
+        self.value = ''
+
+    def __get__(self, instance, owner):
+        return self.value
+
+    def __set__(self, instance, value):
+        if value in ['automatic', 'manual']:
+            self.value = value
+        else:
+            raise AttributeError('Valid values are `automatic` and `manual`')
+
+
 class EngineBase:
     cylinders = 0
     active_pistons = 0
@@ -15,8 +29,11 @@ class V8Engine(EngineBase):
 
 
 class Car:
+    transmission = Transmission()
+
     def __init__(self, engine, *args, **kwargs):
         self._engine = engine
+        self.transmission = 'automatic'
 
     def __repr__(self):
         return f'<Car with V{self._engine.cylinders} Engine>'
@@ -41,5 +58,3 @@ if __name__ == '__main__':
     car2 = Car(V8Engine())
     car2.turn_on()
     car2.print_status()
-
-    #  __get__, __set__

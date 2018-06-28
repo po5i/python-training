@@ -12,7 +12,8 @@ Python offers lots of magic methods, this example demonstrates the use of:
 - `__class__`: To get the class of an instance
 - `__repr__`: To get the official string representation of an object, useful for development. Called by the `repr()` method.
 - `__str__`: To get the printable string representation of an object. Called by the `str()` method.
-
+- `__get__`: To get the attribute of the owner class. This method returns the computed attribute value or `AttributeError`.
+- `__set__`: To set an attribute of an instance of the owner class. It can raise `AttributeError`. For this example a car can set a `Transmission` object only with the values of "manual" or "automatic".
 
 ## Run the exercise
 
