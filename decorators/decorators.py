@@ -5,7 +5,23 @@ def double_decorator(f):
     return wrapper
 
 
-def uppercase_decorator(f):
+def bold_decorator(f):
     def wrapper(*args, **kwargs):
-        return f(*args, **kwargs).upper()
+        return f'<strong>{f(*args, **kwargs)}</strong>'
     return wrapper
+
+
+def bread(f):
+    def wrapper():
+        top = '</"""""""\>'
+        bottom = '<\_______/>'
+        return [top] + f() + [bottom]
+    return wrapper
+
+
+def vegetables(ingredient1, ingredient2):
+    def dec(f):
+        def wrapper():
+            return [ingredient1, f(), ingredient2]
+        return wrapper
+    return dec
