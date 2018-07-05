@@ -93,7 +93,8 @@ if __name__ == '__main__':
     print(f'Office coordinates: {example_namedtuple()}')
     print(f'Sorted Fruits (apple at the end): {example_ordered_dict()}')
     print(f'LIFO stack extracted elements: {example_queue()}')
-    print(f'Decimal precision 42 sum 0.1 + 0.2 = {example_decimal()} but float is: {0.1 + 0.2}')
+    print(f'Decimal precision 42 sum 0.1 + 0.2 = {example_decimal()}'
+          f' but float is: {0.1 + 0.2} instead')
     print(f'Area for a r=10 circle: {example_math()}')
     print(f'Permutations of the first 3 numbers: {example_itertools()}')
     print(f'Using partial() to wrap power(), 10² = {example_functools()}')
