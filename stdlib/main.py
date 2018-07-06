@@ -6,8 +6,17 @@ import queue
 import itertools
 import functools
 import logging
+import os
+import pickle
+import json
+import sys
+
 from collections import namedtuple
 from collections import OrderedDict
+from pathlib import Path
+from multiprocessing import Pool
+from urllib.parse import urlparse
+from unittest.mock import MagicMock
 
 
 def example_datetime():
@@ -88,15 +97,87 @@ def example_logging():
     logger.info('Waking up!')
 
 
+def example_os():
+    base = os.path.dirname(os.path.realpath(__file__))
+    file_name = f'{base}/sample.txt'
+
+    with open(file_name, 'w') as f:
+        print(f)
+        f.write('Something')
+
+    if os.path.exists(file_name):
+        with open(file_name, 'r') as f:
+            return f.read()
+
+
+def example_path():
+    p = Path('/etc')
+    q = p / 'hosts'
+    return os.name == 'posix' and q.exists()
+
+
+def example_pickle(arg):
+    print(f'Serializing {arg} in process {os.getpid()}')
+    f = pickle.dumps(example_datetime)
+    return f
+
+
+def example_unpickle(data):
+    return pickle.loads(data)
+
+
+def example_multiprocessing():
+    functions = [example_datetime, example_namedtuple, example_ordered_dict]
+    pool = Pool(processes=3)
+    return pool.map(example_pickle, functions)
+
+
+def example_json():
+    data = {
+        "foo": "bar"
+    }
+    return json.dumps(data, indent=4)
+
+
+def example_urllib():
+    o = urlparse(
+        'https://domain.com:3900/path/to/resource.html?foo=bar&fred=baz#anchor')
+    return o
+
+
+def example_sys():
+    return f'{sys.version_info.major}.{sys.version_info.minor}'
+
+
+def example_mock():
+    thing = MagicMock()
+    thing.__str__.return_value = 'My mock'
+    thing.some_method.return_value = 42
+    return thing
+
+
 if __name__ == '__main__':
-    print(f'Days since 2018s 4th of July: {example_datetime()}')
-    print(f'Office coordinates: {example_namedtuple()}')
-    print(f'Sorted Fruits (apple at the end): {example_ordered_dict()}')
-    print(f'LIFO stack extracted elements: {example_queue()}')
-    print(f'Decimal precision 42 sum 0.1 + 0.2 = {example_decimal()}'
+    print(f'\nDays since 2018s 4th of July: {example_datetime()}')
+    print(f'\nOffice coordinates: {example_namedtuple()}')
+    print(f'\nSorted Fruits (apple at the end): {example_ordered_dict()}')
+    print(f'\nLIFO stack extracted elements: {example_queue()}')
+    print(f'\nDecimal precision 42 sum 0.1 + 0.2 = {example_decimal()}'
           f' but float is: {0.1 + 0.2} instead')
-    print(f'Area for a r=10 circle: {example_math()}')
-    print(f'Permutations of the first 3 numbers: {example_itertools()}')
-    print(f'Using partial() to wrap power(), 10² = {example_functools()}')
-    print('Logging everything')
+    print(f'\nArea for a r=10 circle: {example_math()}')
+    print(f'\nPermutations of the first 3 numbers: {example_itertools()}')
+    print(f'\nUsing partial() to wrap power(), 10² = {example_functools()}')
+    print('\nLogging everything')
     example_logging()
+    print(f'\nCreate file and write something like: {example_os()}')
+    print(f'\nDoes /etc/hosts file exists in UNIX?: {example_path()}\n')
+    data = example_pickle(example_datetime)
+    print(f'\nBinary representation of `example_datetime`: {data}')
+    f = example_unpickle(data)
+    print(f'\nDeserializing (should match first example): {f()}')
+    print('\nMultithreading serialization of three functions')
+    example_multiprocessing()
+    print(f'\nEncode a dict to JSON string: {example_json()}')
+    print(f'\nParse an URL: {example_urllib()}')
+    print(f'\nRunning Python {example_sys()}')
+    thing = example_mock()
+    print(f'\nMocking thing.some_method() =  {thing.some_method()}')

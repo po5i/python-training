@@ -28,13 +28,30 @@
   - Implement a flexible logging for applications.
   - Provides handlers, filtering and formatting tools.
 - `os`
+  - Useful tools for reading and writing files in the OS.
+  - Supports OS paths.
 - `pathlib`
-- `pickle`, and the dangers of using it
+  - Allows to use classes representing filesystems paths.
+  - Paths are divided between Pure and Concrete paths (the earlier does not provide I/O operations).
+- `pickle`
+  - Serialization module in Python, converts any object in bytestream.
+  - Is not secure against erroneous or maliciously constructed data.
+  - Never unpickle data received from an untrusted source.
 - `multiprocessing`
+  - Support spawning process as threading module.
+  - Introduces `Pool` class that provides data paralellism.
 - `json`
+  - Super useful module to encode and decode basic python objects.
 - unittest: `Mock`, `MagicMock`, `patch`
+  - `Mock` allows to replace parts of your system with attributes and methods.
+  - `MagicMock` is a subclass of `Mock` that includes default implementations of magic methods.
+  - `patch` is a mock decorator which limit the mocking scope to a module or class function.
+  - Any mock can return a value using `return_value` and have a function to be called (or exception raised) by using `side_effect`.
 - `urllib`
+  - Tools to work with URLs.
+  - `urllib.parse.urlparse` is a super useful function to parse url in components.
 - `sys`
+  - Provides access to variables and functions used by the interpreter.
 
 ## Run the exercise
 
