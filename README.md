@@ -8,6 +8,7 @@ Every directory of this repo consists of a sepparate training.
 - [Generators](generators/)
 - [Magic Methods and Duck Typing](magic/)
 - [Standard Library](stdlib/)
+- [Truthy and Falsy values](bool/)
 
 ### Setup
 
