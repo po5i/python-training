@@ -7,6 +7,7 @@ Every directory of this repo consists of a sepparate training.
 - [Inheritance](inheritance/)
 - [Generators](generators/)
 - [Magic Methods and Duck Typing](magic/)
+- [Decorators](decorators/)
 - [Standard Library](stdlib/)
 - [Truthy and Falsy values](bool/)
 
