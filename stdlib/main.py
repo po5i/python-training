@@ -141,7 +141,7 @@ def example_json():
 
 def example_urllib():
     o = urlparse(
-        'https://domain.com:3900/path/to/resource.html?foo=bar&fred=baz#anchor')
+        'https://domain.com:3900/path/to/resource.html?foo=bar#anchor')
     return o
 
 
